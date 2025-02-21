@@ -55,8 +55,10 @@ public class MusicOrganizer
     {
         if(indexValid(index)) {
             Track track = tracks.get(index);
+            track.incrementPlayCount();
             player.startPlaying(track.getFilename());
             System.out.println("Now playing: " + track.getArtist() + " - " + track.getTitle());
+            
         }
     }
     
@@ -134,7 +136,7 @@ public class MusicOrganizer
     {
         player.stop();
     }
-
+    
     /**
      * Determine whether the given index is valid for the collection.
      * Print an error message if it is not.
@@ -160,7 +162,7 @@ public class MusicOrganizer
         }
         return valid;
     }
-    
+
     private void readLibrary(String folderName)
     {
         ArrayList<Track> tempTracks = reader.readTracks(folderName, ".mp3");
